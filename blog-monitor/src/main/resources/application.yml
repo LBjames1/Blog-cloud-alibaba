@@ -14,4 +14,4 @@ spring:
       discovery:
         ignored-services: ${spring.application.name}
 server:
-  port: 8101
+  port: 8001

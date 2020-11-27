@@ -51,7 +51,39 @@
         <minio.version>7.1.0</minio.version>
         <knife4j.version>2.0.4</knife4j.version>
         <nimbus-jose-jwt.version>8.16</nimbus-jose-jwt.version>
+        <blog-common.version>1.0-SNAPSHOT</blog-common.version>
+        <blog-mbg.version>1.0-SNAPSHOT</blog-mbg.version>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
 
     <dependencyManagement>
         <dependencies>
@@ -70,6 +102,18 @@
                 <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <!--blog通用模块-->
+            <dependency>
+                <groupId>com.lauz</groupId>
+                <artifactId>blog-common</artifactId>
+                <version>${blog-common.version}</version>
+            </dependency>
+            <!--blog中MBG生成模块-->
+            <dependency>
+                <groupId>com.lauz</groupId>
+                <artifactId>blog-mbg</artifactId>
+                <version>${blog-mbg.version}</version>
             </dependency>
             <!--MyBatis分页插件starter-->
             <dependency>

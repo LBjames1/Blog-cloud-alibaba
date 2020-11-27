@@ -1,0 +1,29 @@
+server:
+  port: 8003
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+feign:
+  okhttp:
+    enabled: true
+ribbon:
+  ConnectTimeout: 3000 #服务请求连接超时时间（毫秒）
+  ReadTimeout: 3000 #服务请求处理超时时间（毫秒）
+
+
+spring:
+  application:
+    name: blog-oauth
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848
+      config:
+        server-addr: http://localhost:8848
+        file-extension: yaml
+
+logging:
+  level:
+    root: debug
