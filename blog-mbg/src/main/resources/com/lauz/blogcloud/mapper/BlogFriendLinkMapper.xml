@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lauz.blogcloud.mapper.BlogFriendLinkMapper">
+  <resultMap id="BaseResultMap" type="com.lauz.blogcloud.model.BlogFriendLink">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="link_name" jdbcType="VARCHAR" property="linkName" />
+    <result column="link_avatar" jdbcType="VARCHAR" property="linkAvatar" />
+    <result column="link_address" jdbcType="VARCHAR" property="linkAddress" />
+    <result column="link_intro" jdbcType="VARCHAR" property="linkIntro" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, link_name, link_avatar, link_address, link_intro, create_time
+  </sql>
+  <select id="selectByExample" parameterType="com.lauz.blogcloud.model.BlogFriendLinkExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from blog_friend_link
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from blog_friend_link
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from blog_friend_link
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lauz.blogcloud.model.BlogFriendLinkExample">
+    delete from blog_friend_link
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lauz.blogcloud.model.BlogFriendLink">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into blog_friend_link (link_name, link_avatar, link_address, 
+      link_intro, create_time)
+    values (#{linkName,jdbcType=VARCHAR}, #{linkAvatar,jdbcType=VARCHAR}, #{linkAddress,jdbcType=VARCHAR}, 
+      #{linkIntro,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lauz.blogcloud.model.BlogFriendLink">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into blog_friend_link
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="linkName != null">
+        link_name,
+      </if>
+      <if test="linkAvatar != null">
+        link_avatar,
+      </if>
+      <if test="linkAddress != null">
+        link_address,
+      </if>
+      <if test="linkIntro != null">
+        link_intro,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="linkName != null">
+        #{linkName,jdbcType=VARCHAR},
+      </if>
+      <if test="linkAvatar != null">
+        #{linkAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="linkAddress != null">
+        #{linkAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="linkIntro != null">
+        #{linkIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lauz.blogcloud.model.BlogFriendLinkExample" resultType="java.lang.Long">
+    select count(*) from blog_friend_link
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update blog_friend_link
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.linkName != null">
+        link_name = #{record.linkName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkAvatar != null">
+        link_avatar = #{record.linkAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkAddress != null">
+        link_address = #{record.linkAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkIntro != null">
+        link_intro = #{record.linkIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update blog_friend_link
+    set id = #{record.id,jdbcType=INTEGER},
+      link_name = #{record.linkName,jdbcType=VARCHAR},
+      link_avatar = #{record.linkAvatar,jdbcType=VARCHAR},
+      link_address = #{record.linkAddress,jdbcType=VARCHAR},
+      link_intro = #{record.linkIntro,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lauz.blogcloud.model.BlogFriendLink">
+    update blog_friend_link
+    <set>
+      <if test="linkName != null">
+        link_name = #{linkName,jdbcType=VARCHAR},
+      </if>
+      <if test="linkAvatar != null">
+        link_avatar = #{linkAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="linkAddress != null">
+        link_address = #{linkAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="linkIntro != null">
+        link_intro = #{linkIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lauz.blogcloud.model.BlogFriendLink">
+    update blog_friend_link
+    set link_name = #{linkName,jdbcType=VARCHAR},
+      link_avatar = #{linkAvatar,jdbcType=VARCHAR},
+      link_address = #{linkAddress,jdbcType=VARCHAR},
+      link_intro = #{linkIntro,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
