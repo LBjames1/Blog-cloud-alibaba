@@ -26,20 +26,20 @@ public class UserServiceImpl implements UserDetailsService {
 
     @Autowired
     private UmsAdminService adminService;
-    @Autowired
-    private UmsMemberService memberService;
+    /*@Autowired
+    private UmsMemberService memberService;*/
     @Autowired
     private HttpServletRequest request;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         String clientId = request.getParameter("client_id");
-        UserDto userDto;
-        if(AuthConstant.ADMIN_CLIENT_ID.equals(clientId)){
+        UserDto userDto = adminService.loadUserByUsername(username);;
+        /*if(AuthConstant.ADMIN_CLIENT_ID.equals(clientId)){
             userDto = adminService.loadUserByUsername(username);
         }else{
             userDto = memberService.loadUserByUsername(username);
-        }
+        }*/
         if (userDto==null) {
             throw new UsernameNotFoundException(MessageConstant.USERNAME_PASSWORD_ERROR);
         }

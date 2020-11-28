@@ -1,4 +1,4 @@
-package com.lauz.blogcloud.config;
+package com.lauz.blogcloud.auth.config;
 
 import com.lauz.blogcloud.common.config.BaseSwaggerConfig;
 import com.lauz.blogcloud.common.domain.SwaggerProperties;

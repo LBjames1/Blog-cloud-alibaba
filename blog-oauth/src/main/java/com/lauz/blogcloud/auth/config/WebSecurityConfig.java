@@ -1,4 +1,4 @@
-package com.lauz.blogcloud.config;
+package com.lauz.blogcloud.auth.config;
 
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Bean;
