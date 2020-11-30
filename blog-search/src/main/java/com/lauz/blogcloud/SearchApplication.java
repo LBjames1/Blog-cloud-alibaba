@@ -1,4 +1,4 @@
-package com.luaz.blogcloud;
+package com.lauz.blogcloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,8 +6,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-public class ForeApplication {
+public class SearchApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(ForeApplication.class,args);
+        SpringApplication.run(SearchApplication.class,args);
     }
 }
