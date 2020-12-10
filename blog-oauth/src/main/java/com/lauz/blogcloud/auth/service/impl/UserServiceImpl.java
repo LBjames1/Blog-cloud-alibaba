@@ -1,11 +1,9 @@
 package com.lauz.blogcloud.auth.service.impl;
 
-import com.lauz.blogcloud.common.constant.AuthConstant;
 import com.lauz.blogcloud.common.constant.MessageConstant;
 import com.lauz.blogcloud.auth.domain.SecurityUser;
 import com.lauz.blogcloud.common.domain.UserDto;
-import com.lauz.blogcloud.auth.service.UmsAdminService;
-import com.lauz.blogcloud.auth.service.UmsMemberService;
+import com.lauz.blogcloud.auth.service.UserAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.authentication.CredentialsExpiredException;
@@ -25,21 +23,14 @@ import javax.servlet.http.HttpServletRequest;
 public class UserServiceImpl implements UserDetailsService {
 
     @Autowired
-    private UmsAdminService adminService;
-    /*@Autowired
-    private UmsMemberService memberService;*/
+    private UserAdminService adminService;
     @Autowired
     private HttpServletRequest request;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         String clientId = request.getParameter("client_id");
-        UserDto userDto = adminService.loadUserByUsername(username);;
-        /*if(AuthConstant.ADMIN_CLIENT_ID.equals(clientId)){
-            userDto = adminService.loadUserByUsername(username);
-        }else{
-            userDto = memberService.loadUserByUsername(username);
-        }*/
+        UserDto userDto = adminService.loadUserByUsername(username);
         if (userDto==null) {
             throw new UsernameNotFoundException(MessageConstant.USERNAME_PASSWORD_ERROR);
         }

@@ -1,15 +1,7 @@
 server:
   port: 8002
 spring:
-  application:
-    name: blog-gataway
   cloud:
-    nacos:
-      discovery:
-        server-addr: http://localhost:8848
-      config:
-        server-addr: http://localhost:8848
-        file-extension: yaml
     gateway:
       discovery:
         locator:
@@ -50,12 +42,12 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: 'http://localhost:8003/blog-oauth/rsa/publicKey' #配置RSA的公钥访问地址
+          jwk-set-uri: 'http://localhost:8002/blog-oauth/rsa/publicKey' #配置RSA的公钥访问地址
   redis:
     database: 0
     port: 6379
     host: localhost
-    password:
+    password: adminroot
 secure:
   ignore:
     urls: #配置白名单路径

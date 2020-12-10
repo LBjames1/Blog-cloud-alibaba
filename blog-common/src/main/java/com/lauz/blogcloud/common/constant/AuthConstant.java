@@ -21,19 +21,24 @@ public interface AuthConstant {
     String ADMIN_CLIENT_ID = "admin-app";
 
     /**
-     * 前台商城client_id
+     * 前台BLOG client_id
      */
-    String PORTAL_CLIENT_ID = "portal-app";
+    String PORTAL_CLIENT_ID = "foreground-app";
 
     /**
      * 后台管理接口路径匹配
      */
-    String ADMIN_URL_PATTERN = "/mall-admin/**";
+    String ADMIN_URL_PATTERN = "/blog-admin/**";
+
+    /**
+     * 后台用户等接口路径匹配
+     */
+    String OAM_URL_PATTERN = "/blog-oam/**";
 
     /**
      * Redis缓存权限规则key
      */
-    String RESOURCE_ROLES_MAP_KEY = "auth:resourceRolesMap";
+    String RESOURCE_ROLES_MAP_KEY = "user:resourceRolesMap";
 
     /**
      * 认证信息Http请求头

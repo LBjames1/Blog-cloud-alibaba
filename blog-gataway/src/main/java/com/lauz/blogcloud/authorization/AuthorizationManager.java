@@ -68,7 +68,13 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
             if (AuthConstant.ADMIN_CLIENT_ID.equals(userDto.getClientId()) && !pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
                 return Mono.just(new AuthorizationDecision(false));
             }
+            if (AuthConstant.ADMIN_CLIENT_ID.equals(userDto.getClientId()) && !pathMatcher.match(AuthConstant.OAM_URL_PATTERN, uri.getPath())) {
+                return Mono.just(new AuthorizationDecision(false));
+            }
             if (AuthConstant.PORTAL_CLIENT_ID.equals(userDto.getClientId()) && pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
+                return Mono.just(new AuthorizationDecision(false));
+            }
+            if (AuthConstant.PORTAL_CLIENT_ID.equals(userDto.getClientId()) && pathMatcher.match(AuthConstant.OAM_URL_PATTERN, uri.getPath())) {
                 return Mono.just(new AuthorizationDecision(false));
             }
         } catch (ParseException e) {
@@ -76,7 +82,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
             return Mono.just(new AuthorizationDecision(false));
         }
         //非管理端路径直接放行
-        if (!pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
+        if (!pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath()) && !pathMatcher.match(AuthConstant.OAM_URL_PATTERN, uri.getPath())) {
             return Mono.just(new AuthorizationDecision(true));
         }
         //管理端路径需校验权限
