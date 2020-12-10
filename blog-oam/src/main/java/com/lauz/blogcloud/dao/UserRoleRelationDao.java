@@ -1,10 +1,10 @@
-package com.lauz.blogcloud.service;
+package com.lauz.blogcloud.dao;
 
 import com.lauz.blogcloud.model.BlogRole;
 
 import java.util.List;
 
-public interface RoleService {
+public interface UserRoleRelationDao {
 
     List<BlogRole> getRoleList(Integer userId);
 }
