@@ -2,6 +2,7 @@ package com.lauz.blogcloud.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
+import com.lauz.blogcloud.common.constant.AuthConstant;
 import com.lauz.blogcloud.common.domain.UserDto;
 import com.lauz.blogcloud.dao.UserRoleRelationDao;
 import com.lauz.blogcloud.mapper.BlogUserMapper;
@@ -42,7 +43,7 @@ public class UserServiceImpl implements UserService {
             UserDto userDTO = new UserDto();
             BeanUtil.copyProperties(user,userDTO);
             if(CollUtil.isNotEmpty(roleList)){
-                List<String> roleStrList = roleList.stream().map(item -> item.getId() + "_" + item.getName()).collect(Collectors.toList());
+                List<String> roleStrList = roleList.stream().map(item -> AuthConstant.AUTHORITY_PREFIX+item.getId()).collect(Collectors.toList());
                 userDTO.setRoles(roleStrList);
             }
             return userDTO;

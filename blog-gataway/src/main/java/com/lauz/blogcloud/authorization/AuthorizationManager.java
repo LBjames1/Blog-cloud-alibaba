@@ -7,6 +7,7 @@ import com.lauz.blogcloud.config.IgnoreUrlsConfig;
 import com.lauz.blogcloud.common.constant.AuthConstant;
 import com.lauz.blogcloud.common.domain.UserDto;
 import com.nimbusds.jose.JWSObject;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpMethod;
@@ -65,17 +66,17 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
             JWSObject jwsObject = JWSObject.parse(realToken);
             String userStr = jwsObject.getPayload().toString();
             UserDto userDto = JSONUtil.toBean(userStr, UserDto.class);
-            if (AuthConstant.ADMIN_CLIENT_ID.equals(userDto.getClientId()) && !pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
-                return Mono.just(new AuthorizationDecision(false));
+            if (AuthConstant.ADMIN_CLIENT_ID.equals(userDto.getClientId()) ){
+                if(!pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())
+                && !pathMatcher.match(AuthConstant.OAM_URL_PATTERN, uri.getPath()) ){
+                    return Mono.just(new AuthorizationDecision(false));
+                }
             }
-            if (AuthConstant.ADMIN_CLIENT_ID.equals(userDto.getClientId()) && !pathMatcher.match(AuthConstant.OAM_URL_PATTERN, uri.getPath())) {
-                return Mono.just(new AuthorizationDecision(false));
-            }
-            if (AuthConstant.PORTAL_CLIENT_ID.equals(userDto.getClientId()) && pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
-                return Mono.just(new AuthorizationDecision(false));
-            }
-            if (AuthConstant.PORTAL_CLIENT_ID.equals(userDto.getClientId()) && pathMatcher.match(AuthConstant.OAM_URL_PATTERN, uri.getPath())) {
-                return Mono.just(new AuthorizationDecision(false));
+            if (AuthConstant.PORTAL_CLIENT_ID.equals(userDto.getClientId())) {
+                if(pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath()) ||
+                        pathMatcher.match(AuthConstant.OAM_URL_PATTERN, uri.getPath()) ){
+                    return Mono.just(new AuthorizationDecision(false));
+                }
             }
         } catch (ParseException e) {
             e.printStackTrace();

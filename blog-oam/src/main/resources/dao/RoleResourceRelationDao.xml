@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lauz.blogcloud.dao.RoleResourceRelationDao">
+
+    <resultMap id="RoleResourceRelationDto" type="com.lauz.blogcloud.dto.RoleResourceDTO">
+        <result property="name" column="name"/>
+        <result property="url" column="url"/>
+        <result property="roleIds" column="roleIds"/>
+    </resultMap>
+
+    <select id="getRoleResourceRelation" resultMap="RoleResourceRelationDto">
+        select r.name,r.url,
+        group_concat(rr.role_id) as roleIds
+        from blog_resource r left join blog_role_resource_relation rr
+          on r.id=rr.resource_id
+        group by r.url
+    </select>
+
+
+
+</mapper>
