@@ -24,7 +24,7 @@ public class BlogMessage implements Serializable {
     private String messageContent;
 
     @ApiModelProperty(value = "弹幕速度")
-    private Boolean time;
+    private Integer time;
 
     @ApiModelProperty(value = "发布时间")
     private Date createTime;
@@ -79,11 +79,11 @@ public class BlogMessage implements Serializable {
         this.messageContent = messageContent;
     }
 
-    public Boolean getTime() {
+    public Integer getTime() {
         return time;
     }
 
-    public void setTime(Boolean time) {
+    public void setTime(Integer time) {
         this.time = time;
     }
 

@@ -235,52 +235,52 @@ public class BlogLoginLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeEqualTo(Boolean value) {
+        public Criteria andLoginTypeEqualTo(Integer value) {
             addCriterion("login_type =", value, "loginType");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeNotEqualTo(Boolean value) {
+        public Criteria andLoginTypeNotEqualTo(Integer value) {
             addCriterion("login_type <>", value, "loginType");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeGreaterThan(Boolean value) {
+        public Criteria andLoginTypeGreaterThan(Integer value) {
             addCriterion("login_type >", value, "loginType");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andLoginTypeGreaterThanOrEqualTo(Integer value) {
             addCriterion("login_type >=", value, "loginType");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeLessThan(Boolean value) {
+        public Criteria andLoginTypeLessThan(Integer value) {
             addCriterion("login_type <", value, "loginType");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeLessThanOrEqualTo(Boolean value) {
+        public Criteria andLoginTypeLessThanOrEqualTo(Integer value) {
             addCriterion("login_type <=", value, "loginType");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeIn(List<Boolean> values) {
+        public Criteria andLoginTypeIn(List<Integer> values) {
             addCriterion("login_type in", values, "loginType");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeNotIn(List<Boolean> values) {
+        public Criteria andLoginTypeNotIn(List<Integer> values) {
             addCriterion("login_type not in", values, "loginType");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeBetween(Boolean value1, Boolean value2) {
+        public Criteria andLoginTypeBetween(Integer value1, Integer value2) {
             addCriterion("login_type between", value1, value2, "loginType");
             return (Criteria) this;
         }
 
-        public Criteria andLoginTypeNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andLoginTypeNotBetween(Integer value1, Integer value2) {
             addCriterion("login_type not between", value1, value2, "loginType");
             return (Criteria) this;
         }

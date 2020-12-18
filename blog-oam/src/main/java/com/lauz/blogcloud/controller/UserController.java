@@ -1,6 +1,7 @@
 package com.lauz.blogcloud.controller;
 
 import com.lauz.blogcloud.common.domain.UserDto;
+import com.lauz.blogcloud.model.BlogUser;
 import com.lauz.blogcloud.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -23,5 +24,13 @@ public class UserController {
     public UserDto loadUserByUsername(@RequestParam String username) {
         UserDto userDTO = userService.loadUserByUsername(username);
         return userDTO;
+    }
+
+    @ApiOperation("获取博主信息")
+    @GetMapping(value = "/getMySelfInfo")
+    public BlogUser getMySelfInfo() {
+        String username = "admin";
+        BlogUser user = userService.getUserByUserName(username);
+        return user;
     }
 }

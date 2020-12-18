@@ -10,8 +10,8 @@
     <result column="avatar" jdbcType="VARCHAR" property="avatar" />
     <result column="intro" jdbcType="VARCHAR" property="intro" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="status" jdbcType="BIT" property="status" />
-    <result column="is_silence" jdbcType="BIT" property="isSilence" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="is_silence" jdbcType="INTEGER" property="isSilence" />
     <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -116,7 +116,7 @@
       last_login_time)
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
       #{userType,jdbcType=INTEGER}, #{avatar,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=BIT}, #{isSilence,jdbcType=BIT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{isSilence,jdbcType=INTEGER}, 
       #{lastLoginTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lauz.blogcloud.model.BlogUser">
@@ -179,10 +179,10 @@
         #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="status != null">
-        #{status,jdbcType=BIT},
+        #{status,jdbcType=INTEGER},
       </if>
       <if test="isSilence != null">
-        #{isSilence,jdbcType=BIT},
+        #{isSilence,jdbcType=INTEGER},
       </if>
       <if test="lastLoginTime != null">
         #{lastLoginTime,jdbcType=TIMESTAMP},
@@ -223,10 +223,10 @@
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.status != null">
-        status = #{record.status,jdbcType=BIT},
+        status = #{record.status,jdbcType=INTEGER},
       </if>
       <if test="record.isSilence != null">
-        is_silence = #{record.isSilence,jdbcType=BIT},
+        is_silence = #{record.isSilence,jdbcType=INTEGER},
       </if>
       <if test="record.lastLoginTime != null">
         last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
@@ -246,8 +246,8 @@
       avatar = #{record.avatar,jdbcType=VARCHAR},
       intro = #{record.intro,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      status = #{record.status,jdbcType=BIT},
-      is_silence = #{record.isSilence,jdbcType=BIT},
+      status = #{record.status,jdbcType=INTEGER},
+      is_silence = #{record.isSilence,jdbcType=INTEGER},
       last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -278,10 +278,10 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="status != null">
-        status = #{status,jdbcType=BIT},
+        status = #{status,jdbcType=INTEGER},
       </if>
       <if test="isSilence != null">
-        is_silence = #{isSilence,jdbcType=BIT},
+        is_silence = #{isSilence,jdbcType=INTEGER},
       </if>
       <if test="lastLoginTime != null">
         last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
@@ -298,8 +298,8 @@
       avatar = #{avatar,jdbcType=VARCHAR},
       intro = #{intro,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=BIT},
-      is_silence = #{isSilence,jdbcType=BIT},
+      status = #{status,jdbcType=INTEGER},
+      is_silence = #{isSilence,jdbcType=INTEGER},
       last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>

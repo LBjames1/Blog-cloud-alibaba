@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lauz.blogcloud.dao.EsArticleDao">
+
+
+    <select id="getEsArticles" resultType="com.lauz.blogcloud.dto.ArticleSearchDTO">
+        select a.id,  a.article_title,a.article_content
+        from blog_article a
+         WHERE is_delete = 0
+ 		and is_draft = 0
+    </select>
+
+</mapper>

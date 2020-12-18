@@ -9,9 +9,9 @@
     <result column="article_title" jdbcType="VARCHAR" property="articleTitle" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="is_top" jdbcType="BIT" property="isTop" />
-    <result column="is_draft" jdbcType="BIT" property="isDraft" />
-    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="is_top" jdbcType="INTEGER" property="isTop" />
+    <result column="is_draft" jdbcType="INTEGER" property="isDraft" />
+    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.lauz.blogcloud.model.BlogArticle">
     <result column="article_content" jdbcType="LONGVARCHAR" property="articleContent" />
@@ -135,12 +135,12 @@
     </selectKey>
     insert into blog_article (user_id, category_id, article_cover, 
       article_title, create_time, update_time, 
-      is_top, is_draft, is_delete, article_content
-      )
+      is_top, is_draft, is_delete, 
+      article_content)
     values (#{userId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{articleCover,jdbcType=VARCHAR}, 
       #{articleTitle,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{isTop,jdbcType=BIT}, #{isDraft,jdbcType=BIT}, #{isDelete,jdbcType=BIT}, #{articleContent,jdbcType=LONGVARCHAR}
-      )
+      #{isTop,jdbcType=INTEGER}, #{isDraft,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}, 
+      #{articleContent,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lauz.blogcloud.model.BlogArticle">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -199,13 +199,13 @@
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="isTop != null">
-        #{isTop,jdbcType=BIT},
+        #{isTop,jdbcType=INTEGER},
       </if>
       <if test="isDraft != null">
-        #{isDraft,jdbcType=BIT},
+        #{isDraft,jdbcType=INTEGER},
       </if>
       <if test="isDelete != null">
-        #{isDelete,jdbcType=BIT},
+        #{isDelete,jdbcType=INTEGER},
       </if>
       <if test="articleContent != null">
         #{articleContent,jdbcType=LONGVARCHAR},
@@ -243,13 +243,13 @@
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.isTop != null">
-        is_top = #{record.isTop,jdbcType=BIT},
+        is_top = #{record.isTop,jdbcType=INTEGER},
       </if>
       <if test="record.isDraft != null">
-        is_draft = #{record.isDraft,jdbcType=BIT},
+        is_draft = #{record.isDraft,jdbcType=INTEGER},
       </if>
       <if test="record.isDelete != null">
-        is_delete = #{record.isDelete,jdbcType=BIT},
+        is_delete = #{record.isDelete,jdbcType=INTEGER},
       </if>
       <if test="record.articleContent != null">
         article_content = #{record.articleContent,jdbcType=LONGVARCHAR},
@@ -268,9 +268,9 @@
       article_title = #{record.articleTitle,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      is_top = #{record.isTop,jdbcType=BIT},
-      is_draft = #{record.isDraft,jdbcType=BIT},
-      is_delete = #{record.isDelete,jdbcType=BIT},
+      is_top = #{record.isTop,jdbcType=INTEGER},
+      is_draft = #{record.isDraft,jdbcType=INTEGER},
+      is_delete = #{record.isDelete,jdbcType=INTEGER},
       article_content = #{record.articleContent,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -285,9 +285,9 @@
       article_title = #{record.articleTitle,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      is_top = #{record.isTop,jdbcType=BIT},
-      is_draft = #{record.isDraft,jdbcType=BIT},
-      is_delete = #{record.isDelete,jdbcType=BIT}
+      is_top = #{record.isTop,jdbcType=INTEGER},
+      is_draft = #{record.isDraft,jdbcType=INTEGER},
+      is_delete = #{record.isDelete,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -314,13 +314,13 @@
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="isTop != null">
-        is_top = #{isTop,jdbcType=BIT},
+        is_top = #{isTop,jdbcType=INTEGER},
       </if>
       <if test="isDraft != null">
-        is_draft = #{isDraft,jdbcType=BIT},
+        is_draft = #{isDraft,jdbcType=INTEGER},
       </if>
       <if test="isDelete != null">
-        is_delete = #{isDelete,jdbcType=BIT},
+        is_delete = #{isDelete,jdbcType=INTEGER},
       </if>
       <if test="articleContent != null">
         article_content = #{articleContent,jdbcType=LONGVARCHAR},
@@ -336,9 +336,9 @@
       article_title = #{articleTitle,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      is_top = #{isTop,jdbcType=BIT},
-      is_draft = #{isDraft,jdbcType=BIT},
-      is_delete = #{isDelete,jdbcType=BIT},
+      is_top = #{isTop,jdbcType=INTEGER},
+      is_draft = #{isDraft,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=INTEGER},
       article_content = #{articleContent,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -350,9 +350,9 @@
       article_title = #{articleTitle,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      is_top = #{isTop,jdbcType=BIT},
-      is_draft = #{isDraft,jdbcType=BIT},
-      is_delete = #{isDelete,jdbcType=BIT}
+      is_top = #{isTop,jdbcType=INTEGER},
+      is_draft = #{isDraft,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

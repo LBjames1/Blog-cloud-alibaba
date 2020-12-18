@@ -555,52 +555,52 @@ public class BlogArticleExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsTopEqualTo(Boolean value) {
+        public Criteria andIsTopEqualTo(Integer value) {
             addCriterion("is_top =", value, "isTop");
             return (Criteria) this;
         }
 
-        public Criteria andIsTopNotEqualTo(Boolean value) {
+        public Criteria andIsTopNotEqualTo(Integer value) {
             addCriterion("is_top <>", value, "isTop");
             return (Criteria) this;
         }
 
-        public Criteria andIsTopGreaterThan(Boolean value) {
+        public Criteria andIsTopGreaterThan(Integer value) {
             addCriterion("is_top >", value, "isTop");
             return (Criteria) this;
         }
 
-        public Criteria andIsTopGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andIsTopGreaterThanOrEqualTo(Integer value) {
             addCriterion("is_top >=", value, "isTop");
             return (Criteria) this;
         }
 
-        public Criteria andIsTopLessThan(Boolean value) {
+        public Criteria andIsTopLessThan(Integer value) {
             addCriterion("is_top <", value, "isTop");
             return (Criteria) this;
         }
 
-        public Criteria andIsTopLessThanOrEqualTo(Boolean value) {
+        public Criteria andIsTopLessThanOrEqualTo(Integer value) {
             addCriterion("is_top <=", value, "isTop");
             return (Criteria) this;
         }
 
-        public Criteria andIsTopIn(List<Boolean> values) {
+        public Criteria andIsTopIn(List<Integer> values) {
             addCriterion("is_top in", values, "isTop");
             return (Criteria) this;
         }
 
-        public Criteria andIsTopNotIn(List<Boolean> values) {
+        public Criteria andIsTopNotIn(List<Integer> values) {
             addCriterion("is_top not in", values, "isTop");
             return (Criteria) this;
         }
 
-        public Criteria andIsTopBetween(Boolean value1, Boolean value2) {
+        public Criteria andIsTopBetween(Integer value1, Integer value2) {
             addCriterion("is_top between", value1, value2, "isTop");
             return (Criteria) this;
         }
 
-        public Criteria andIsTopNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andIsTopNotBetween(Integer value1, Integer value2) {
             addCriterion("is_top not between", value1, value2, "isTop");
             return (Criteria) this;
         }
@@ -615,52 +615,52 @@ public class BlogArticleExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsDraftEqualTo(Boolean value) {
+        public Criteria andIsDraftEqualTo(Integer value) {
             addCriterion("is_draft =", value, "isDraft");
             return (Criteria) this;
         }
 
-        public Criteria andIsDraftNotEqualTo(Boolean value) {
+        public Criteria andIsDraftNotEqualTo(Integer value) {
             addCriterion("is_draft <>", value, "isDraft");
             return (Criteria) this;
         }
 
-        public Criteria andIsDraftGreaterThan(Boolean value) {
+        public Criteria andIsDraftGreaterThan(Integer value) {
             addCriterion("is_draft >", value, "isDraft");
             return (Criteria) this;
         }
 
-        public Criteria andIsDraftGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andIsDraftGreaterThanOrEqualTo(Integer value) {
             addCriterion("is_draft >=", value, "isDraft");
             return (Criteria) this;
         }
 
-        public Criteria andIsDraftLessThan(Boolean value) {
+        public Criteria andIsDraftLessThan(Integer value) {
             addCriterion("is_draft <", value, "isDraft");
             return (Criteria) this;
         }
 
-        public Criteria andIsDraftLessThanOrEqualTo(Boolean value) {
+        public Criteria andIsDraftLessThanOrEqualTo(Integer value) {
             addCriterion("is_draft <=", value, "isDraft");
             return (Criteria) this;
         }
 
-        public Criteria andIsDraftIn(List<Boolean> values) {
+        public Criteria andIsDraftIn(List<Integer> values) {
             addCriterion("is_draft in", values, "isDraft");
             return (Criteria) this;
         }
 
-        public Criteria andIsDraftNotIn(List<Boolean> values) {
+        public Criteria andIsDraftNotIn(List<Integer> values) {
             addCriterion("is_draft not in", values, "isDraft");
             return (Criteria) this;
         }
 
-        public Criteria andIsDraftBetween(Boolean value1, Boolean value2) {
+        public Criteria andIsDraftBetween(Integer value1, Integer value2) {
             addCriterion("is_draft between", value1, value2, "isDraft");
             return (Criteria) this;
         }
 
-        public Criteria andIsDraftNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andIsDraftNotBetween(Integer value1, Integer value2) {
             addCriterion("is_draft not between", value1, value2, "isDraft");
             return (Criteria) this;
         }
@@ -675,52 +675,52 @@ public class BlogArticleExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteEqualTo(Boolean value) {
+        public Criteria andIsDeleteEqualTo(Integer value) {
             addCriterion("is_delete =", value, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteNotEqualTo(Boolean value) {
+        public Criteria andIsDeleteNotEqualTo(Integer value) {
             addCriterion("is_delete <>", value, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteGreaterThan(Boolean value) {
+        public Criteria andIsDeleteGreaterThan(Integer value) {
             addCriterion("is_delete >", value, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andIsDeleteGreaterThanOrEqualTo(Integer value) {
             addCriterion("is_delete >=", value, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteLessThan(Boolean value) {
+        public Criteria andIsDeleteLessThan(Integer value) {
             addCriterion("is_delete <", value, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteLessThanOrEqualTo(Boolean value) {
+        public Criteria andIsDeleteLessThanOrEqualTo(Integer value) {
             addCriterion("is_delete <=", value, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteIn(List<Boolean> values) {
+        public Criteria andIsDeleteIn(List<Integer> values) {
             addCriterion("is_delete in", values, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteNotIn(List<Boolean> values) {
+        public Criteria andIsDeleteNotIn(List<Integer> values) {
             addCriterion("is_delete not in", values, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteBetween(Boolean value1, Boolean value2) {
+        public Criteria andIsDeleteBetween(Integer value1, Integer value2) {
             addCriterion("is_delete between", value1, value2, "isDelete");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andIsDeleteNotBetween(Integer value1, Integer value2) {
             addCriterion("is_delete not between", value1, value2, "isDelete");
             return (Criteria) this;
         }

@@ -24,7 +24,7 @@ spring:
       uris: 127.0.0.1:9200
 mybatis:
   mapper-locations:
-  - classpath:mapper/*.xml
+  - classpath:dao/*.xml
   - classpath*:com/**/mapper/*.xml
 management: #开启SpringBoot Admin的监控
   endpoints:

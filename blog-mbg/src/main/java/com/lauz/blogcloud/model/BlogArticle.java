@@ -26,13 +26,13 @@ public class BlogArticle implements Serializable {
     private Date updateTime;
 
     @ApiModelProperty(value = "是否置顶")
-    private Boolean isTop;
+    private Integer isTop;
 
     @ApiModelProperty(value = "是否为草稿")
-    private Boolean isDraft;
+    private Integer isDraft;
 
     @ApiModelProperty(value = "是否删除")
-    private Boolean isDelete;
+    private Integer isDelete;
 
     @ApiModelProperty(value = "内容")
     private String articleContent;
@@ -95,27 +95,27 @@ public class BlogArticle implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Boolean getIsTop() {
+    public Integer getIsTop() {
         return isTop;
     }
 
-    public void setIsTop(Boolean isTop) {
+    public void setIsTop(Integer isTop) {
         this.isTop = isTop;
     }
 
-    public Boolean getIsDraft() {
+    public Integer getIsDraft() {
         return isDraft;
     }
 
-    public void setIsDraft(Boolean isDraft) {
+    public void setIsDraft(Integer isDraft) {
         this.isDraft = isDraft;
     }
 
-    public Boolean getIsDelete() {
+    public Integer getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(Boolean isDelete) {
+    public void setIsDelete(Integer isDelete) {
         this.isDelete = isDelete;
     }
 

@@ -24,7 +24,7 @@ spring:
     host: localhost # Redis服务器地址
     database: 0 # Redis数据库索引（默认为0）
     port: 6379 # Redis服务器连接端口
-    password: # Redis服务器连接密码（默认为空）
+    password: adminroot # Redis服务器连接密码（默认为空）
     timeout: 3000ms # 连接超时时间（毫秒）
   #rabbitmq:
   #  host: localhost
@@ -34,7 +34,7 @@ spring:
   #  password: blog
 mybatis:
   mapper-locations:
-  - classpath:mapper/*.xml
+  - classpath:dao/*.xml
   - classpath*:com/**/mapper/*.xml
 management: #开启SpringBoot Admin的监控
   endpoints:
@@ -49,12 +49,20 @@ management: #开启SpringBoot Admin的监控
 redis:
   database: blog
   key:
-    authCode: 'ums:authCode'
-    orderId: 'oms:orderId'
-    member: 'ums:member'
+    notice: 'blog:notice' #首页通知
+    blogViewsCount: 'blog:viewCount' #博客浏览量
+    articleViewCount: 'article:viewCount' #文章浏览量
+    articleLikeCount: 'article:likeCount' #文章点赞量
+    categoryCount: 'categoryCount' #分类数量
+    tagCount: 'tagCount' #标签数量
+    aboutMe: 'aboutMe' #关于我
   expire:
     authCode: 90 # 验证码超期时间
     common: 86400 # 24小时
+
+blog:
+  default:
+    notice: 'lauz的博客' #默认博客通知
 
 # 消息队列定义
 rabbitmq:

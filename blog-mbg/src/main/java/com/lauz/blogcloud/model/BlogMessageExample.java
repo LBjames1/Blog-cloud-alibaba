@@ -525,52 +525,52 @@ public class BlogMessageExample {
             return (Criteria) this;
         }
 
-        public Criteria andTimeEqualTo(Boolean value) {
+        public Criteria andTimeEqualTo(Integer value) {
             addCriterion("time =", value, "time");
             return (Criteria) this;
         }
 
-        public Criteria andTimeNotEqualTo(Boolean value) {
+        public Criteria andTimeNotEqualTo(Integer value) {
             addCriterion("time <>", value, "time");
             return (Criteria) this;
         }
 
-        public Criteria andTimeGreaterThan(Boolean value) {
+        public Criteria andTimeGreaterThan(Integer value) {
             addCriterion("time >", value, "time");
             return (Criteria) this;
         }
 
-        public Criteria andTimeGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andTimeGreaterThanOrEqualTo(Integer value) {
             addCriterion("time >=", value, "time");
             return (Criteria) this;
         }
 
-        public Criteria andTimeLessThan(Boolean value) {
+        public Criteria andTimeLessThan(Integer value) {
             addCriterion("time <", value, "time");
             return (Criteria) this;
         }
 
-        public Criteria andTimeLessThanOrEqualTo(Boolean value) {
+        public Criteria andTimeLessThanOrEqualTo(Integer value) {
             addCriterion("time <=", value, "time");
             return (Criteria) this;
         }
 
-        public Criteria andTimeIn(List<Boolean> values) {
+        public Criteria andTimeIn(List<Integer> values) {
             addCriterion("time in", values, "time");
             return (Criteria) this;
         }
 
-        public Criteria andTimeNotIn(List<Boolean> values) {
+        public Criteria andTimeNotIn(List<Integer> values) {
             addCriterion("time not in", values, "time");
             return (Criteria) this;
         }
 
-        public Criteria andTimeBetween(Boolean value1, Boolean value2) {
+        public Criteria andTimeBetween(Integer value1, Integer value2) {
             addCriterion("time between", value1, value2, "time");
             return (Criteria) this;
         }
 
-        public Criteria andTimeNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andTimeNotBetween(Integer value1, Integer value2) {
             addCriterion("time not between", value1, value2, "time");
             return (Criteria) this;
         }

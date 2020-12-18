@@ -8,7 +8,7 @@
     <result column="nickname" jdbcType="VARCHAR" property="nickname" />
     <result column="avatar" jdbcType="VARCHAR" property="avatar" />
     <result column="message_content" jdbcType="VARCHAR" property="messageContent" />
-    <result column="time" jdbcType="BIT" property="time" />
+    <result column="time" jdbcType="INTEGER" property="time" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -110,7 +110,7 @@
       avatar, message_content, time, 
       create_time)
     values (#{ipAddress,jdbcType=VARCHAR}, #{ipSource,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
-      #{avatar,jdbcType=VARCHAR}, #{messageContent,jdbcType=VARCHAR}, #{time,jdbcType=BIT}, 
+      #{avatar,jdbcType=VARCHAR}, #{messageContent,jdbcType=VARCHAR}, #{time,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lauz.blogcloud.model.BlogMessage">
@@ -158,7 +158,7 @@
         #{messageContent,jdbcType=VARCHAR},
       </if>
       <if test="time != null">
-        #{time,jdbcType=BIT},
+        #{time,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -193,7 +193,7 @@
         message_content = #{record.messageContent,jdbcType=VARCHAR},
       </if>
       <if test="record.time != null">
-        time = #{record.time,jdbcType=BIT},
+        time = #{record.time,jdbcType=INTEGER},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -211,7 +211,7 @@
       nickname = #{record.nickname,jdbcType=VARCHAR},
       avatar = #{record.avatar,jdbcType=VARCHAR},
       message_content = #{record.messageContent,jdbcType=VARCHAR},
-      time = #{record.time,jdbcType=BIT},
+      time = #{record.time,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -236,7 +236,7 @@
         message_content = #{messageContent,jdbcType=VARCHAR},
       </if>
       <if test="time != null">
-        time = #{time,jdbcType=BIT},
+        time = #{time,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -251,7 +251,7 @@
       nickname = #{nickname,jdbcType=VARCHAR},
       avatar = #{avatar,jdbcType=VARCHAR},
       message_content = #{messageContent,jdbcType=VARCHAR},
-      time = #{time,jdbcType=BIT},
+      time = #{time,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>

@@ -8,7 +8,7 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="reply_id" jdbcType="INTEGER" property="replyId" />
     <result column="parent_id" jdbcType="INTEGER" property="parentId" />
-    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.lauz.blogcloud.model.BlogComment">
     <result column="comment_content" jdbcType="LONGVARCHAR" property="commentContent" />
@@ -133,7 +133,7 @@
       reply_id, parent_id, is_delete, 
       comment_content)
     values (#{userId,jdbcType=INTEGER}, #{articleId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{replyId,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{isDelete,jdbcType=TINYINT}, 
+      #{replyId,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}, 
       #{commentContent,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lauz.blogcloud.model.BlogComment">
@@ -181,7 +181,7 @@
         #{parentId,jdbcType=INTEGER},
       </if>
       <if test="isDelete != null">
-        #{isDelete,jdbcType=TINYINT},
+        #{isDelete,jdbcType=INTEGER},
       </if>
       <if test="commentContent != null">
         #{commentContent,jdbcType=LONGVARCHAR},
@@ -216,7 +216,7 @@
         parent_id = #{record.parentId,jdbcType=INTEGER},
       </if>
       <if test="record.isDelete != null">
-        is_delete = #{record.isDelete,jdbcType=TINYINT},
+        is_delete = #{record.isDelete,jdbcType=INTEGER},
       </if>
       <if test="record.commentContent != null">
         comment_content = #{record.commentContent,jdbcType=LONGVARCHAR},
@@ -234,7 +234,7 @@
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       reply_id = #{record.replyId,jdbcType=INTEGER},
       parent_id = #{record.parentId,jdbcType=INTEGER},
-      is_delete = #{record.isDelete,jdbcType=TINYINT},
+      is_delete = #{record.isDelete,jdbcType=INTEGER},
       comment_content = #{record.commentContent,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -248,7 +248,7 @@
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       reply_id = #{record.replyId,jdbcType=INTEGER},
       parent_id = #{record.parentId,jdbcType=INTEGER},
-      is_delete = #{record.isDelete,jdbcType=TINYINT}
+      is_delete = #{record.isDelete,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -272,7 +272,7 @@
         parent_id = #{parentId,jdbcType=INTEGER},
       </if>
       <if test="isDelete != null">
-        is_delete = #{isDelete,jdbcType=TINYINT},
+        is_delete = #{isDelete,jdbcType=INTEGER},
       </if>
       <if test="commentContent != null">
         comment_content = #{commentContent,jdbcType=LONGVARCHAR},
@@ -287,7 +287,7 @@
       create_time = #{createTime,jdbcType=TIMESTAMP},
       reply_id = #{replyId,jdbcType=INTEGER},
       parent_id = #{parentId,jdbcType=INTEGER},
-      is_delete = #{isDelete,jdbcType=TINYINT},
+      is_delete = #{isDelete,jdbcType=INTEGER},
       comment_content = #{commentContent,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -298,7 +298,7 @@
       create_time = #{createTime,jdbcType=TIMESTAMP},
       reply_id = #{replyId,jdbcType=INTEGER},
       parent_id = #{parentId,jdbcType=INTEGER},
-      is_delete = #{isDelete,jdbcType=TINYINT}
+      is_delete = #{isDelete,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

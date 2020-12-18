@@ -23,7 +23,7 @@ public class BlogComment implements Serializable {
     private Integer parentId;
 
     @ApiModelProperty(value = "是否删除")
-    private Byte isDelete;
+    private Integer isDelete;
 
     @ApiModelProperty(value = "评论内容")
     private String commentContent;
@@ -78,11 +78,11 @@ public class BlogComment implements Serializable {
         this.parentId = parentId;
     }
 
-    public Byte getIsDelete() {
+    public Integer getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(Byte isDelete) {
+    public void setIsDelete(Integer isDelete) {
         this.isDelete = isDelete;
     }
 

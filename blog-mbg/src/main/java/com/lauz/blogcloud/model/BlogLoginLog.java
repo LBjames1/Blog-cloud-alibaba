@@ -11,7 +11,7 @@ public class BlogLoginLog implements Serializable {
     private Integer userId;
 
     @ApiModelProperty(value = "登录类型")
-    private Boolean loginType;
+    private Integer loginType;
 
     @ApiModelProperty(value = "用户登录ip")
     private String ipAddr;
@@ -40,11 +40,11 @@ public class BlogLoginLog implements Serializable {
         this.userId = userId;
     }
 
-    public Boolean getLoginType() {
+    public Integer getLoginType() {
         return loginType;
     }
 
-    public void setLoginType(Boolean loginType) {
+    public void setLoginType(Integer loginType) {
         this.loginType = loginType;
     }
 

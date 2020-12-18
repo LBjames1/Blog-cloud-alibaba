@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.lauz.blogcloud.model.BlogLoginLog">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="login_type" jdbcType="BIT" property="loginType" />
+    <result column="login_type" jdbcType="INTEGER" property="loginType" />
     <result column="ip_addr" jdbcType="VARCHAR" property="ipAddr" />
     <result column="ip_source" jdbcType="VARCHAR" property="ipSource" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -106,7 +106,7 @@
     </selectKey>
     insert into blog_login_log (user_id, login_type, ip_addr, 
       ip_source, create_time)
-    values (#{userId,jdbcType=INTEGER}, #{loginType,jdbcType=BIT}, #{ipAddr,jdbcType=VARCHAR}, 
+    values (#{userId,jdbcType=INTEGER}, #{loginType,jdbcType=INTEGER}, #{ipAddr,jdbcType=VARCHAR}, 
       #{ipSource,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lauz.blogcloud.model.BlogLoginLog">
@@ -136,7 +136,7 @@
         #{userId,jdbcType=INTEGER},
       </if>
       <if test="loginType != null">
-        #{loginType,jdbcType=BIT},
+        #{loginType,jdbcType=INTEGER},
       </if>
       <if test="ipAddr != null">
         #{ipAddr,jdbcType=VARCHAR},
@@ -165,7 +165,7 @@
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
       <if test="record.loginType != null">
-        login_type = #{record.loginType,jdbcType=BIT},
+        login_type = #{record.loginType,jdbcType=INTEGER},
       </if>
       <if test="record.ipAddr != null">
         ip_addr = #{record.ipAddr,jdbcType=VARCHAR},
@@ -185,7 +185,7 @@
     update blog_login_log
     set id = #{record.id,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER},
-      login_type = #{record.loginType,jdbcType=BIT},
+      login_type = #{record.loginType,jdbcType=INTEGER},
       ip_addr = #{record.ipAddr,jdbcType=VARCHAR},
       ip_source = #{record.ipSource,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
@@ -200,7 +200,7 @@
         user_id = #{userId,jdbcType=INTEGER},
       </if>
       <if test="loginType != null">
-        login_type = #{loginType,jdbcType=BIT},
+        login_type = #{loginType,jdbcType=INTEGER},
       </if>
       <if test="ipAddr != null">
         ip_addr = #{ipAddr,jdbcType=VARCHAR},
@@ -217,7 +217,7 @@
   <update id="updateByPrimaryKey" parameterType="com.lauz.blogcloud.model.BlogLoginLog">
     update blog_login_log
     set user_id = #{userId,jdbcType=INTEGER},
-      login_type = #{loginType,jdbcType=BIT},
+      login_type = #{loginType,jdbcType=INTEGER},
       ip_addr = #{ipAddr,jdbcType=VARCHAR},
       ip_source = #{ipSource,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP}

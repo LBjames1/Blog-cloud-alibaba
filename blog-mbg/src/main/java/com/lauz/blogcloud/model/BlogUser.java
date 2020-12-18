@@ -16,7 +16,7 @@ public class BlogUser implements Serializable {
     @ApiModelProperty(value = "用户昵称")
     private String nickname;
 
-    @ApiModelProperty(value = "用户类型(1前台 2后台)")
+    @ApiModelProperty(value = "用户类型(1前台 2后台 3同时拥有前后台)")
     private Integer userType;
 
     @ApiModelProperty(value = "用户头像")
@@ -29,10 +29,10 @@ public class BlogUser implements Serializable {
     private Date createTime;
 
     @ApiModelProperty(value = "用户状态默认1有效")
-    private Boolean status;
+    private Integer status;
 
     @ApiModelProperty(value = "是否禁言")
-    private Boolean isSilence;
+    private Integer isSilence;
 
     @ApiModelProperty(value = "上次登录时间")
     private Date lastLoginTime;
@@ -103,19 +103,19 @@ public class BlogUser implements Serializable {
         this.createTime = createTime;
     }
 
-    public Boolean getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
-    public Boolean getIsSilence() {
+    public Integer getIsSilence() {
         return isSilence;
     }
 
-    public void setIsSilence(Boolean isSilence) {
+    public void setIsSilence(Integer isSilence) {
         this.isSilence = isSilence;
     }
 
