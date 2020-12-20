@@ -53,9 +53,11 @@ redis:
     blogViewsCount: 'blog:viewCount' #博客浏览量
     articleViewCount: 'article:viewCount' #文章浏览量
     articleLikeCount: 'article:likeCount' #文章点赞量
+    userLikeSet: 'userLikeSet' #用户点赞文章set
     categoryCount: 'categoryCount' #分类数量
     tagCount: 'tagCount' #标签数量
     aboutMe: 'aboutMe' #关于我
+    loginUser: '' #当前登录用户信息
   expire:
     authCode: 90 # 验证码超期时间
     common: 86400 # 24小时

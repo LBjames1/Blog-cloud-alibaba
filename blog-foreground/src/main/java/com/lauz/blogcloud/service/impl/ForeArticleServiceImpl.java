@@ -17,7 +17,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,6 +35,8 @@ public class ForeArticleServiceImpl implements ForeArticleService {
     private String viewCount_key;
     @Value("${redis.key.articleLikeCount}")
     private String likeCount_key;
+    @Value("${redis.key.userLikeSet}")
+    private String userLikeSet;
     @Autowired
     private RedisService redisService;
     @Autowired
@@ -90,5 +94,29 @@ public class ForeArticleServiceImpl implements ForeArticleService {
             articleDTOS.add(articleDTO);
         });
         return articleDTOS;
+    }
+
+    @Override
+    public void saveLike(Integer id) {
+        //查询当前用户点赞过的文章id集合
+        Set<Integer> articleLikeSet = (Set<Integer>) redisService.hGet(userLikeSet,"");
+        //第一次点赞则创建
+        if (articleLikeSet == null) {
+            articleLikeSet = new HashSet<Integer>();
+        }
+        //判断是否点赞
+        if (articleLikeSet.contains(id)) {
+            //点过赞则删除文章id
+            articleLikeSet.remove(id);
+            //文章点赞量-1
+            redisService.hDecr(likeCount_key,id.toString(),1L);
+        } else {
+            //未点赞则增加文章id
+            articleLikeSet.add(id);
+            //文章点赞量+1
+            redisService.hIncr(likeCount_key,id.toString(),1L);
+        }
+        //保存点赞记录
+        redisService.hSet(userLikeSet,"",articleLikeSet);
     }
 }

@@ -12,4 +12,6 @@ public interface ForeArticleService {
     ArticleDetailDTO getArticle(Integer id);
 
     List<ForeArticleDTO> getArchiveArticleList(Integer current);
+
+    void saveLike(Integer id);
 }
