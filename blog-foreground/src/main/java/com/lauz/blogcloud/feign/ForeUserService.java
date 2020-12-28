@@ -11,4 +11,7 @@ public interface ForeUserService {
 
     @GetMapping("/user/getMySelfInfo")
     BlogUser getMySelfInfo();
+
+    @GetMapping("/user/getCurrentUser")
+    BlogUser getCurrentUser();
 }

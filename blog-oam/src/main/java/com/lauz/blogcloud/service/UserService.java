@@ -13,4 +13,6 @@ public interface UserService {
      * @return
      */
     UserDto loadUserByUsername(String username);
+
+    BlogUser getCurrentuser();
 }

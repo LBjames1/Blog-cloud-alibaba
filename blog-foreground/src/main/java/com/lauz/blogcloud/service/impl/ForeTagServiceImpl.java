@@ -21,9 +21,9 @@ public class ForeTagServiceImpl implements ForeTagService {
     private BlogTagMapper tagMapper;
     @Autowired
     private RedisService redisService;
-    @Value("redis.key.tagCount")
+    @Value("${redis.key.tagCount}")
     private String tagCount;
-    @Value("redis.expire.common")
+    @Value("${redis.expire.common}")
     private String expireTime;
 
     @Override

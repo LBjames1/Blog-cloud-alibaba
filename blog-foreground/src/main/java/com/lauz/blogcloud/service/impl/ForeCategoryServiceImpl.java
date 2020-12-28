@@ -21,9 +21,9 @@ public class ForeCategoryServiceImpl implements ForeCategoryService {
     private BlogCategoryMapper categoryMapper;
     @Autowired
     private RedisService redisService;
-    @Value("redis.key.categoryCount")
+    @Value("${redis.key.categoryCount}")
     private String categoryCount;
-    @Value("redis.expire.common")
+    @Value("${redis.expire.common}")
     private String expireTime;
 
 

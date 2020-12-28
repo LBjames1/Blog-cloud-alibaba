@@ -15,9 +15,9 @@ public class ForeAboutServiceImpl implements ForeAboutService {
     private BlogAboutInfoMapper aboutInfoMapper;
     @Autowired
     private RedisService redisService;
-    @Value("redis.key.aboutMe")
+    @Value("${redis.key.aboutMe}")
     private String aboutMe;
-    @Value("redis.expire.common")
+    @Value("${redis.expire.common}")
     private String expireTime;
 
     @Override

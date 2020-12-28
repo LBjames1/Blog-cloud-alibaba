@@ -59,7 +59,7 @@ public class EsArticleSearchServiceImpl implements EsArticleSearchService {
 
     @Override
     public List<ArticleSearchDTO> search(String keyword) {
-        return searchArticle(buildQuery(keyword));
+        return searchArticle(keyword);
     }
 
     /**

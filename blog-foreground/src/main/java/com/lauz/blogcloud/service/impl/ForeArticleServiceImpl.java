@@ -7,6 +7,7 @@ import com.lauz.blogcloud.common.util.HTMLUtil;
 import com.lauz.blogcloud.dao.ForeArticleDao;
 import com.lauz.blogcloud.dto.ArticleDetailDTO;
 import com.lauz.blogcloud.dto.ForeArticleDTO;
+import com.lauz.blogcloud.feign.ForeUserService;
 import com.lauz.blogcloud.mapper.BlogArticleMapper;
 import com.lauz.blogcloud.mapper.BlogArticleTagMapper;
 import com.lauz.blogcloud.mapper.BlogTagMapper;
@@ -41,6 +42,8 @@ public class ForeArticleServiceImpl implements ForeArticleService {
     private RedisService redisService;
     @Autowired
     private BlogArticleMapper articleMapper;
+    @Autowired
+    private ForeUserService userService;
 
 
     @Override
@@ -98,8 +101,9 @@ public class ForeArticleServiceImpl implements ForeArticleService {
 
     @Override
     public void saveLike(Integer id) {
+        BlogUser user = userService.getCurrentUser();
         //查询当前用户点赞过的文章id集合
-        Set<Integer> articleLikeSet = (Set<Integer>) redisService.hGet(userLikeSet,"");
+        Set<Integer> articleLikeSet = (Set<Integer>) redisService.hGet(userLikeSet,user.getId().toString());
         //第一次点赞则创建
         if (articleLikeSet == null) {
             articleLikeSet = new HashSet<Integer>();
@@ -117,6 +121,6 @@ public class ForeArticleServiceImpl implements ForeArticleService {
             redisService.hIncr(likeCount_key,id.toString(),1L);
         }
         //保存点赞记录
-        redisService.hSet(userLikeSet,"",articleLikeSet);
+        redisService.hSet(userLikeSet,user.getId().toString(),articleLikeSet);
     }
 }

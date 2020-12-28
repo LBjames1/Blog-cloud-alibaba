@@ -9,6 +9,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@MapperScan({"com.lauz.blogcloud.mapper"})
+@MapperScan({"com.lauz.blogcloud.mapper","com.lauz.blogcloud.dao"})
 public class MyBatisConfig {
 }

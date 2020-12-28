@@ -33,4 +33,12 @@ public class UserController {
         BlogUser user = userService.getUserByUserName(username);
         return user;
     }
+
+    @ApiOperation("获取当前登录用户信息")
+    @GetMapping(value = "/getCurrentUser")
+    public BlogUser getCurrentUser() {
+        BlogUser user = userService.getCurrentuser();
+        return user;
+    }
+
 }
