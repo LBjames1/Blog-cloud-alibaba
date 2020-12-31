@@ -18,6 +18,6 @@ public class TagDTO {
     /**
      * 标签名
      */
-    private String categoryName;
+    private String tagName;
 
 }
