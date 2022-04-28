@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>blog-common</module>
-        <module>blog-gataway</module>
+        <module>blog-gateway</module>
         <module>blog-search</module>
         <module>blog-monitor</module>
         <module>blog-mbg</module>
